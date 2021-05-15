@@ -180,8 +180,15 @@ class MusicaController extends Controller
     
     
     public function Pagamento($numero,$amount){
-        
 
+        $mpesa = new \Karson\MpesaPhpSdk\Mpesa();
+        $mpesa->setApiKey('your api key');
+        $mpesa->setPublicKey('your public key');
+        $mpesa->setEnv('test');// 'live' production environment 
+
+        //This creates transaction between an M-Pesa short code to a phone number registered on M-Pesa.
+
+        $result = $mpesa->c2b($invoice_id, $phone_number, $amount, $reference_id, $shortcode);
 
 
 
